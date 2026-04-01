@@ -1,0 +1,82 @@
+/* Load your custom font */
+@font-face {
+    font-family: 'EasterEggs';
+    src: url('../fonts/Easter eggs ST.ttf') format('truetype');
+}
+
+body {
+    background-color: #f0f4f8;
+    color: #2d3748;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    text-align: center;
+    background: white;
+    padding: 3rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+h1 {
+    color: #6b46c1;
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.egg-display {
+    margin: 40px 0;
+    cursor: pointer;
+}
+
+.message-wrapper {
+    position: relative;
+    display: inline-block;
+    padding: 20px;
+    background: #faf5ff;
+    border: 2px dashed #d6bcfa;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+}
+
+/* The Egg Font Style */
+.encoded-text {
+    font-family: 'EasterEggs', sans-serif;
+    font-size: 4rem;
+    display: block;
+    transition: opacity 0.3s ease;
+}
+
+/* The Secret Message (Hidden by default) */
+.decoded-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #9f7aea;
+    opacity: 0;
+    white-space: nowrap;
+    transition: opacity 0.3s ease;
+}
+
+/* Hover Effects */
+.message-wrapper:hover {
+    background: #fff;
+    border-style: solid;
+    transform: scale(1.05);
+}
+
+.message-wrapper:hover .encoded-text {
+    opacity: 0.1; /* Fades the eggs */
+}
+
+.message-wrapper:hover .decoded-text {
+    opacity: 1; /* Shows the real text */
+}
