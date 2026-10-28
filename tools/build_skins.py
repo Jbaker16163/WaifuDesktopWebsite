@@ -21,7 +21,9 @@ TYPE_LABELS = {
     "Faces": "Faces",
     "Pets": "Pets",
 }
-RARITY_ORDER = ["Basic", "Common", "Uncommon", "Rare", "Epic", "Legendary"]
+RARITY_ORDER = ["Common", "Uncommon", "Rare", "Epic", "Legendary"]
+# Basic items are given to every player in-game and never exist in the Steam inventory.
+SKIP_RARITIES = {"Basic"}
 
 
 def main():
@@ -35,7 +37,9 @@ def main():
         if label is None:  # Non-Equippable (shards) aren't collectible skins
             continue
         for it in items:
-            base = os.path.splitext(os.path.basename(it["path"]))[0]
+            if it.get("RarityTeir") in SKIP_RARITIES:
+                continue
+            base =os.path.splitext(os.path.basename(it["path"]))[0]
             skins.append({
                 "id": it["item_id"],
                 "name": it["Name"],
